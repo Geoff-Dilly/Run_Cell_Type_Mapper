@@ -1,0 +1,4 @@
+# Ignore generated data and logs
+data/*
+results/*
+src/cell_type_mapper
