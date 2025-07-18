@@ -1,6 +1,6 @@
 #  Run Cell Type Mapper
 
-**Author:** Geoff Dilly, PhD
+**Author:** Geoff Dilly, PhD  
 **Lab:** Messing Lab, UT Austin
 
 ## Overview
