@@ -40,16 +40,20 @@ dependencies:
   - r-base
   - python=3.11
   - r-seurat
+  - h5py
   - r-curl
   - r-httr
-  - h5py
   - r-tidyverse
   - r-here
   - scanpy=1.10.0
   - anndata=0.12.0
   - bioconductor-singlecellexperiment
   - bioconductor-zellkonverter
-  - bioconductor-biomart
+
+  # Biomart may need to be installed in R
+  # conda run -n mapmycells_env Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager", repos="https://cloud.r-project.org")'
+  # conda run -n mapmycells_env Rscript -e 'BiocManager::install("biomaRt")'
+  # conda run -n mapmycells_env Rscript -e 'install.packages("curl", repos="https://cloud.r-project.org")'
 
 EOF
 fi
@@ -65,21 +69,20 @@ if ! command -v conda &> /dev/null; then
 fi
 
 # Clone the MMC source code
-git clone https://github.com/AllenInstitute/cell_type_mapper src/cell_type_mapper
+git clone https://github.com/AllenInstitute/cell_type_mapper src/cell_type_mapperconda activate test_env
+Rscript -e 'library(curl); packageVersion("curl")'
 
-# Source conda in the current shell for 'conda activate'
-source "$(conda info --base)/etc/profile.d/conda.sh"
 
 # Make a Conda env
 conda env create -f mapmycells_env.yaml
-conda activate mapmycells_env
 
 # Install difficult packages in R
-Rscript -e 'install.packages("curl")'
-Rscript -e 'install.packages("httr")'
+conda run -n mapmycells_env Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager", repos="https://cloud.r-project.org")'
+conda run -n mapmycells_env Rscript -e 'install.packages("curl", repos="https://cloud.r-project.org")'
+conda run -n mapmycells_env Rscript -e 'BiocManager::install("biomaRt")'
 
 # Install MMC tool from source code
-pip install -e src/cell_type_mapper
+conda run -n mapmycells_env pip install -e src/cell_type_mapper
 
 # Download the mouse brain MMC taxonomy (or another taxonomy json)
 curl --output-dir data/taxonomies -O https://allen-brain-cell-atlas.s3-us-west-2.amazonaws.com/mapmycells/WMB-10X/20240831/mouse_markers_230821.json

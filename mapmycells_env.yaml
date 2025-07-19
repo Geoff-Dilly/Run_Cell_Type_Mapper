@@ -7,15 +7,16 @@ dependencies:
   - r-base
   - python=3.11
   - r-seurat
-  - h5py=3.0.9
+  - h5py
+  - r-curl
+  - r-httr
   - r-tidyverse
   - r-here
   - scanpy=1.10.0
   - anndata=0.12.0
   - bioconductor-singlecellexperiment
   - bioconductor-zellkonverter
-  - r-biomart
 
-  # Others may need to be installed in R
-  # Rscript -e 'install.packages("curl")'
-  # Rscript -e 'install.packages("httr")'
+  # Biomart may need to be installed in R
+  # conda run -n mapmycells_env Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager", repos="https://cloud.r-project.org")'
+  # conda run -n mapmycells_env Rscript -e 'BiocManager::install("biomaRt")'
