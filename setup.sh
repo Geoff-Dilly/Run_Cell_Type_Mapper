@@ -49,6 +49,8 @@ dependencies:
   - anndata=0.12.0
   - bioconductor-singlecellexperiment
   - bioconductor-zellkonverter
+  - bioconductor-org.Mm.eg.db
+  - bioconductor-AnnotationDbi
 
   # Biomart may need to be installed in R
   # conda run -n mapmycells_env Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager", repos="https://cloud.r-project.org")'
@@ -69,9 +71,7 @@ if ! command -v conda &> /dev/null; then
 fi
 
 # Clone the MMC source code
-git clone https://github.com/AllenInstitute/cell_type_mapper src/cell_type_mapperconda activate test_env
-Rscript -e 'library(curl); packageVersion("curl")'
-
+git clone https://github.com/AllenInstitute/cell_type_mapper src/cell_type_mapper
 
 # Make a Conda env
 conda env create -f mapmycells_env.yaml

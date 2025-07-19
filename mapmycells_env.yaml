@@ -16,6 +16,8 @@ dependencies:
   - anndata=0.12.0
   - bioconductor-singlecellexperiment
   - bioconductor-zellkonverter
+  - bioconductor-org.Mm.eg.db
+  - bioconductor-AnnotationDbi
 
   # Biomart may need to be installed in R
   # conda run -n mapmycells_env Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager", repos="https://cloud.r-project.org")'
