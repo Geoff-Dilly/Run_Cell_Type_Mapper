@@ -61,7 +61,7 @@ convert_mtx_symbols_to_ens_2 <- function(counts_mat) {
 
   # Map MGI symbols to Ensembl IDs
   gene_map <- AnnotationDbi::mapIds(
-    org.Mm.eg.db,
+    org.Mm.eg.db, 
     keys = gene_symbols,
     column = "ENSEMBL",
     keytype = "SYMBOL",
