@@ -11,6 +11,7 @@ This repository contains tools for running The Allen Institute's [Cell Type Mapp
 
 - `setup.sh`: Creates a directory structure and Conda environment recommended for this repo.
 - `R/`: R scripts and modules for extracting and formatting data from Seurat objects.
+- `src/`: Python code for installing Cell Type Mapper.
 - `data/`: Directory for raw data and MMC taxonomies.
 - `results/`: Directory for outputs.
 
