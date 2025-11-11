@@ -1,4 +1,4 @@
-# mmc_utils.R
+# 01_process_seurat
 
 library(Seurat)
 library(zellkonverter)
