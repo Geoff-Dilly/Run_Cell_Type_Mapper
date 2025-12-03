@@ -91,7 +91,7 @@ make_mapmycells_h5 <- function(seurat_obj, output_file = "data/mmc_matrix.h5ad")
   DefaultAssay(seurat_obj) <- "RNA"
 
   # Convert raw counts to sce
-  counts_mat <- Seurat::GetAssayData(seurat_obj, assay = "RNA", slot = "counts")
+  counts_mat <- Seurat::GetAssayData(seurat_obj, assay = "RNA", assay = "counts")
   ensembl_matrix <- convert_mtx_symbols_to_ens_2(counts_mat)
   # Coerce matrix to dense so it is recognized as a dataset
   ensembl_matrix <- as.matrix(ensembl_matrix)
