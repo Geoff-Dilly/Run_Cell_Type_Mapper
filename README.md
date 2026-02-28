@@ -19,7 +19,7 @@ This repository contains tools for running The Allen Institute's [Cell Type Mapp
 
 1. **Setup the directory structure and environment:**
 	```sh
-	git clone <repo_url>
+	git clone "https://github.com/Geoff-Dilly/Run_Cell_Type_Mapper"
 	cd <repo_directory>
 	bash setup.sh
 	```
